@@ -1,7 +1,10 @@
 import { http, isAdminLoggedIn } from './http'
 import { getApiBase, getWsBase } from './config'
+import { ref } from 'vue'
 
 export { getApiBase, getWsBase }
+
+export const VERSION = ref('')
 
 export const createLiveSocket = (subscribe, handlers = {}) => {
   const { onUpdate, onStatus, onMessage } = handlers
@@ -157,6 +160,9 @@ export const logout = () => {
 export const fetchConfig = async () => {
   const result = await http.get('/api/config', { includeAuth: false, includeTurnstile: false })
   if (result.error) return null
+  if (result.data && result.data.version) {
+    VERSION.value = result.data.version
+  }
   return result.data
 }
 

@@ -2,7 +2,7 @@
 
 一个基于 Cloudflare Workers + D1 + Durable Objects 的多服务器监控探针系统，支持实时监控、历史数据查看、延迟追踪、地图展示等功能。兼容主流Linux系统，Alpine Linux，OpenWrt，Windows系统。**演示地址**：<https://tz.dashdeep.dpdns.org/>
 
-**当前版本：V2.7.3.4**
+**当前版本：V2.7.4**
 
 <2.7.1 新增了功能，需要**升级安装脚本** 才能生效，否则无法获取丢包率
 ```

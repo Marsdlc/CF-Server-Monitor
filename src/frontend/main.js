@@ -6,6 +6,7 @@ import './styles/light.css'
 import { currentLang, translations } from './utils/i18n'
 import { http } from './utils/http'
 import { initConfig } from './utils/config'
+import { VERSION } from './utils/api'
 
 const getTranslation = () => {
   const lang = localStorage.getItem('language_preference') || 'en'
@@ -18,6 +19,9 @@ async function fetchConfig() {
   try {
     const result = await http.get('/api/config', { includeAuth: false, includeTurnstile: true })
     if (!result.error) {
+      if (result.data && result.data.version) {
+        VERSION.value = result.data.version
+      }
       return result.data
     }
   } catch (e) {
